@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" th:href="@{../css/nyl.css}">
+  <style>
+    img{
+        width: 100px;
+        height: 100px;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="logo">
+    <h3><i class="fa-solid fa-hotel"></i> Rental  <span>X</span></h3>
+  </div>
+  <div class="menu-toggle">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+  <div class="nav">
+    <div class="user-button">
+      <button>Ethan</button>
+    </div>
+    <div class="menu">
+      <ul>
+        <button class="btn6"> Contact Us</button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="search-container">
+    <div class="search-bar">
+      <form action="/dorms/search" method="POST">
+      <div>
+        <i class="fa fa-search" id="ss"> <input type="text" placeholder="Location,City,Building..." ></i>
+        <button class="custom-button">Search</button>
+      </div>
+      </form>
+    </div>
+  </div>
+<div class="container">
+  <h2 class="ads">Properties for Rent in Thailand</h2>
+  <form action="/dorms/sort" method="GET">
+    <label>Sort By:</label>
+    <select name="sortBy">
+      <option value="priceLowToHigh">Price: Low to High</option>
+      <option value="priceHighToLow">Price: High to Low</option>
+      <option value="nameAlphabetically">Name: Alphabetically</option>
+    </select>
+    <button type="submit">Sort</button>
+  </form>
+<!--  <button class="btn3"><i class="fa-solid fa-arrow-down-short-wide"></i> Filter & sort</button>-->
+  <button class="btn4"><i class="fa-solid fa-share"></i> Share</button>
+  <button class="btn5"><i class="fa-regular fa-heart"></i> Wishlist</button>
+  <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+</div>
+
+<div>
+  <h4 class="sort">Sort by Recommended</h4>
+</div>
+<div class="session">
+  <div th:each="dorm : ${dorms}" class="product-card">
+    <div class="image-gallery">
+      <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
+    </div>
+    <!-- <img src="RegentGym.jpg" alt="Product Image" class="img1"> -->
+    <div class="title">
+      <h3 th:text="${dorm.dormName}"></h3>
+      <div class="bb">
+        <button class="heart"> <i class="fa-regular fa-heart full_red"></i></button>
+        <button class="share">   <i class="fa-solid fa-share"></i></button>
+      </div>
+    </div>
+
+    <hr>
+    <p class="product-description" th:text="${dorm.dormDesc}"></p>
+    <h3 class="product-price">$<span th:text="${dorm.price}"></span></h3>
+    <hr>
+    <div class="info">
+      <span class="bed"><i class="fa-regular fa-moon"></i> 1 bedroom </span>
+      <span class="bath"><i class="fa-solid fa-shower"></i> 1 bathroom </span>
+    </div>
+    <div class="btns">
+      <button class="product-button">Add to Cart</button>
+      <button class="map-button"><i class="fa-solid fa-location-dot"></i> Map</button>
+    </div>
+  </div>
+
+<div class="footer">
+  <div class="footer-content">
+    <div class="footer-section about">
+      <p>fb.com/renfolx.coth</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="footer-section links">
+
+      <ul>
+        <li><span>+66955344442</span></li>
+        <li><span>contact@rentalx.co.th</span></li>
+
+      </ul>
+    </div>
+    <div class="footer-section contact">
+      <ul>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <script th:src="@{/../js/nyl.js}"></script>
+</body>
+
+</html>

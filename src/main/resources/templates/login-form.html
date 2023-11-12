@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentalX</title>
+    <link rel="stylesheet" th:href="@{../css/login.css}">
+</head>
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a th:href="@{/registration}">Sign up</a>
+            <a th:href="@{/login}">Sign in</a>
+            <a href="#">Contact us</a>
+        </nav>
+    </header>
+    
+        <div class="headings">
+        <h1>Thailand's Best House Rental Platform</h1>
+        <h2>Find, Rent and Thrive</h2>
+        </div>
+        <div class="wrapper container">
+            <div class="message" th:if="${param.error}">
+                Invalid Username or Password
+            </div>
+            <div class="message" th:if="${param.logout}">
+                Logout Successfuly
+            </div>
+
+            <form th:action="@{/login}" method="post">
+                <h1>Login or Sign up</h1>
+                <div class="form-group input-box">
+                    <label for="username">Email:</label>
+                    <input type="email" name="username" id="username" placeholder="Email" required>
+                </div>
+                <div class="form-group input-box">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="Password*" required>
+                </div>
+                <input type="submit" class="btn" value="Login">
+<!--                <button type="submit" class="btn">Login</button>-->
+                <div class="forgot">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <hr>
+                <div class="input-box">
+                    <a class="create"  th:href="@{/registration}">Create new account</a>
+    <!--                <button herf="/registration" type="submit" class="create">Create new account</button>-->
+                </div>
+            </form>
+        </div>
+        <section class="footer">
+            <div class="footer-content">
+                <!-- <a href="#"><i class='bx bxl-facebook-circle'></i></a> -->
+                <li><a href="#"><i class='bx bxl-facebook-circle'></i>fb.com/rentalx.co.th</a></li>
+                <!-- <a href="#"><i class='bx bxs-phone-call'></i></a> -->
+                <li><a href="#"><i class='bx bxs-phone-call'></i>+66 95 534 4442</a></li>
+            </div>
+            <div class="footer-content">
+                
+                <li><a href="#"><i class='bx bxl-telegram' style='color:#ffffff'  ></i>+66 95 534 4442</a></li>
+                <a href="#"></a>
+                <li><a href="#">contact@rentalx.co.th</a></li>
+            </div>
+            <div class="footer-content-us">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </div>
+        </section>
+</body>
+</html>

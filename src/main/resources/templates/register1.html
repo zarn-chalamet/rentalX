@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentalX</title>
+    <link rel="stylesheet" th:href="@{../css/signupx.css}">
+</head>
+<body>
+<header>
+    <h2 class="logo">Logo</h2>
+    <nav class="navigation">
+        <a th:href="@{/registration}">Sign up</a>
+        <a href="@{/login}">Sign in</a>
+        <a href="#">Contact us</a>
+    </nav>
+</header>
+<div class="headings">
+    <h1>Thailand's Best House Rental Platform</h1>
+    <h2>Find, Rent and Thrive</h2>
+</div>
+<div class="wrapper">
+
+    <form th:action="@{/registration}" method="post" role="form" th:object="${user}">
+        <div class="input-box">
+            <input type="text" th:field="*{userName}" placeholder="Name*" required>
+        </div>
+        <div class="input-box">
+            <input type="text" th:field="*{email}" placeholder="Email*" required>
+        </div>
+<!--        <div class="input-box">-->
+<!--            <input type="text" placeholder="Phone number*" required>-->
+<!--        </div>-->
+        <div class="input-box">
+            <input type="password" th:field="*{password}" placeholder="Create Password*" required>
+        </div>
+<!--        <div class="input-box">-->
+<!--            <input type="password" placeholder="Confirm Password*" required>-->
+<!--        </div>-->
+        <label>User Type:</label>
+        <input type="radio" th:field="*{role}" value="USER" />User
+        <input type="radio" th:field="*{role}" value="LANDLORD" />Landlord<br/>
+
+        <button type="submit" class="create">Create new account</button>
+
+
+    </form>
+</div>
+<section class="footer">
+    <div class="footer-content">
+        <!-- <a href="#"><i class='bx bxl-facebook-circle'></i></a> -->
+        <li><a href="#"><i class='bx bxl-facebook-circle'></i>fb.com/rentalx.co.th</a></li>
+        <!-- <a href="#"><i class='bx bxs-phone-call'></i></a> -->
+        <li><a href="#"><i class='bx bxs-phone-call'></i>+66 95 534 4442</a></li>
+    </div>
+    <div class="footer-content">
+
+        <li><a href="#"><i class='bx bxl-telegram' style='color:#ffffff'  ></i>+66 95 534 4442</a></li>
+        <a href="#"></a>
+        <li><a href="#">contact@rentalx.co.th</a></li>
+    </div>
+    <div class="footer-content-us">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </div>
+</section>
+</body>
+</html>

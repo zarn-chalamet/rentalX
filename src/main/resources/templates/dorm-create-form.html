@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Dorm Form</title>
+</head>
+<body>
+<h1>This is dorm create Form!</h1>
+<div align="center">
+    <h1>User Registration</h1>
+    <form th:action="@{/create-dorm}" method="POST" th:object="${dorm}" enctype="multipart/form-data">
+        <label>Name:</label>
+        <input type="text" th:field="*{dormName}" /><br/>
+
+
+        <label>Desc:</label>
+        <input type="text" th:field="*{dormDesc}" /><br/>
+
+        <label>Price:</label>
+        <input type="number" th:field="*{price}" /><br/>
+
+        <label>Dorm Photos:</label>
+        <input type="file" name="file" accept="image/*" multiple required><br/>
+        <!--        <input type="file" name="dormPhotos" th:field="*{dormPhotos}" accept="image/*" >-->
+
+
+        <button type="submit">Submit</button>
+
+        <a href="/login">Back to login</a>
+
+    </form>
+</div>
+</body>
+</html>

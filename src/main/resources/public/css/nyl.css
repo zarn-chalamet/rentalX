@@ -1,0 +1,370 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color:  rgb(235, 235, 255);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+.logo {
+    margin-left: 80px;
+    background-color: black;
+    padding: 0px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.logo span {
+    color: rgb(255, 170, 0);
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #000;
+}
+
+.user-button button {
+    font-weight: bold;
+    background-color: rgb(203, 203, 43);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: rgb(218, 238, 232);
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+.search-container {
+    display: flex;
+align-items: center;
+   margin-left: 300px ;
+}
+
+#ss{
+    background-color: rgb(226, 224, 224);
+    padding-left: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: none;
+   width: 400px;
+    outline: none;
+    background-color: rgb(226, 224, 224);
+    border-radius: 5px;
+}
+
+
+.search-button{
+    background-color:  rgb(226, 224, 224);
+    border: none;
+    color: black;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.fa-search {
+    font-size: 16px;
+}
+
+.custom-button {
+    background-color: rgb(30, 12, 46); /* Background color for the buttons */
+    width: 150px;
+    height: 45px ;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 30px; /* Adjust the margin as needed */
+}
+
+.custom-button:hover {
+    background-color: #007770;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(255, 250, 250);
+}
+
+.ads {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.sort {
+    margin-left: 140px;
+}
+
+.btn3, .btn4, .btn5, .btn6 {
+    height: 40px;
+    width: 110px;
+    border: 1px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn4 {
+    margin-left: 10px;
+}
+
+.btn5 {
+    margin-left: auto;
+    border: none;
+    background-color: rgb(202, 221, 215);
+}
+
+.btn6 {
+    cursor: pointer;
+    margin-left: 10px;
+    border: 3px solid black;
+    border-radius: 6px;
+    background-color: rgb(30, 12, 46);
+    color: white;
+}
+
+.btn6 i {
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .btn3, .btn4, .btn5, .btn6 {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+.btn6:hover{
+    background-color: #1e1919;
+}
+
+.session{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.product-card {
+
+    margin-left: 120px;
+    width: 300px;
+/* border: 1px solid #121111; */
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow:5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 70px ;
+}
+
+.product-title {
+    font-size: 18px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.product-description {
+    font-size: 12px;
+    color: #555;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #0d0d0d;
+    margin: 10px 0;
+}
+
+.product-button {
+    background-color: #009688;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-button:hover {
+    background-color: #007770;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+}
+.bb{
+    display: flex;
+    justify-content: space-evenly;
+}
+.heart,.share{
+    border:none;
+    display: inline-block;
+    background-color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+.heart:hover{
+    color: red;
+}
+.heart:active{
+    color: red;
+}
+.share:hover{
+    color: blue;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+}
+.bed{
+    margin-left: 30px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.bath{
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+.map-button{
+    border-radius: 10px;
+    height: 28px;
+    width: 80px;
+    cursor: pointer;
+}
+.map-button:hover{
+    background-color:yellow;
+}
+.footer {
+    background-color: rgb(16, 16, 43);
+    color: #fff;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer-section {
+    padding: 20px;
+}
+
+.footer-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+ .contact a {
+    text-decoration: none;
+    color: rgb(255, 170, 0);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-section {
+        text-align: center;
+    }
+}
+#H_icon:hover{
+   color: red;
+}
+.hh{
+background-color: white;
+border: none;
+color: red;
+font-size: 22px;
+cursor: pointer;
+}
