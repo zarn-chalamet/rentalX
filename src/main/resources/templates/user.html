@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +45,8 @@
     </div>
     <div class="container">
         <h2>Welcome, [[${user.getUserName()}]]</h2>
+        <a th:href="@{/dorms}">Dorm List</a>
+        <a th:href="@{/wishlists}">Show wishlists</a>
         
         <span sec:authorize="isAuthenticated">
         <a th:href="@{/logout}">

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The Dorm</title>
+</head>
+<body>
+    <h3 th:text="${dorm.dormName}"></h3>
+    <p th:text="${dorm.dormDesc}"></p>
+    <a th:href="@{/add-wishList/{dorm_id} (dorm_id=${dorm.dormId})}">
+        Add To WishList
+    </a>
+    <p>Price: $<span th:text="${dorm.price}"></span></p>
+    <div class="image-gallery">
+        <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
+    </div>
+<!--    <a th:href="@{/add-review/{dorm_id} (dorm_id=${dorm.dormId})}"></a>-->
+    <h2>Add Your Review</h2>
+    <form id="review-form" th:action="@{/add-review/{dorm_id} (dorm_id=${dorm.dormId})}"
+          method="post" th:object="${review}">
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating" th:field="*{rating}" >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="review">Review:</label>
+        <textarea id="review" name="review" rows="4" cols="50" th:field="*{reviewFromUser}"></textarea>
+
+        <button type="submit" >Submit Review</button>
+    </form>
+</body>
+</html>

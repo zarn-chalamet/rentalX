@@ -41,12 +41,12 @@
 </head>
 <body>
     <div class="header">
-        <h1>ADMIN Dashboard</h1>
+        <h1>LANDLORD Dashboard</h1>
     </div>
     <div class="container">
         <h2>Welcome, [[${user.getUserName()}]]</h2>
         <a th:href="@{/create-dorm}">Create Dorm Post</a>
-        
+        <a th:href="@{/show-landlord-dorms}">See My Dorms</a>
         <span sec:authorize="isAuthenticated">
         <a th:href="@{/logout}">
          Logout

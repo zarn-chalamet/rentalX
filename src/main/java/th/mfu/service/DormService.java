@@ -19,4 +19,6 @@ public interface DormService {
     List<Dorm> getDormsSortedByNameAlphabetically();
 
     Dorm findById(Long dormId);
+
+    List<Dorm> findDormByLandlordId(Long landlordId);
 }

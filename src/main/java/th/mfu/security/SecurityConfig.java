@@ -33,8 +33,9 @@ public class SecurityConfig {
 
         http.csrf(c -> c.disable())
 
-                .authorizeRequests(request -> request.antMatchers("/admin-page")
-                        .hasAuthority("LANDLORD").antMatchers("/user-page").hasAuthority("USER")
+                .authorizeRequests(request -> request.antMatchers("/admin-page","/create-dorm","show-landlord-dorms")
+                        .hasAuthority("LANDLORD")
+                        .antMatchers("/user-page","/dorms","/wishlists","/add-wishList/**").hasAuthority("USER")
                         .antMatchers("/registration", "/css/**").permitAll()
                         .anyRequest().authenticated())
 

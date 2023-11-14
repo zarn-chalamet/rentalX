@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import th.mfu.dto.DormDto;
+import th.mfu.dto.ReviewDto;
 import th.mfu.dto.UserDto;
 import th.mfu.model.Dorm;
 import th.mfu.model.User;
@@ -101,6 +102,21 @@ public class DormController {
 
         model.addAttribute("dorms", sortedDorms);
         return "dorms-list";
+    }
+
+    @GetMapping("/show-landlord-dorms")
+    public String showLandlordDorms(Model model,@AuthenticationPrincipal UserDetails userDetails){
+        String email = userDetails.getUsername();
+        User landlord = userService.findByEmail(email);
+        Long landlordId = landlord.getId();
+        model.addAttribute("dorms",dormService.findDormByLandlordId(landlordId));
+        return "landlord-dorms";
+    }
+    @GetMapping("/dorm/{id}")
+    public String showEachDorm(Model model,@PathVariable("id") Long dormId){
+        model.addAttribute("dorm",dormService.findById(dormId));
+        model.addAttribute("review",new ReviewDto());
+        return "show-each-dorm";
     }
 
 }

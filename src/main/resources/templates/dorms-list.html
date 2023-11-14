@@ -38,9 +38,13 @@
             max-height: 150px;
             margin: 5px;
         }
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+<a th:href="@{/profile}">View your profile</a>
 <h1>Success! Dorm listing has been submitted.</h1>
     <form action="/dorms/search" method="POST">
         <input type="text" name="keyword" placeholder="Search Products">
@@ -58,37 +62,20 @@
 
 <div class="product-list">
     <div th:each="dorm : ${dorms}" class="product-card">
-        <h3 th:text="${dorm.dormName}"></h3>
-        <p th:text="${dorm.dormDesc}"></p>
-        <p>Price: $<span th:text="${dorm.price}"></span></p>
-        <div class="image-gallery">
-            <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
-        </div>
+        <a th:href="@{/dorm/{id} (id=${dorm.dormId})}">
+            <div>
+                <h3 th:text="${dorm.dormName}"></h3>
+                <p th:text="${dorm.dormDesc}"></p>
+                <a th:href="@{/add-wishList/{dorm_id}(dorm_id=${dorm.dormId})}">
+                    Add To WishList
+                </a>
+                <p>Price: $<span th:text="${dorm.price}"></span></p>
+                <div class="image-gallery">
+                    <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
+                </div>
+            </div>
+        </a>
     </div>
 </div>
-
-
-<!--<ul class="list-group">-->
-<!--    <li th:each="dorm : ${dorms}">-->
-<!--        <div >-->
-<!--            <div>-->
-<!--                <span th:text="${dorm.dormName}" class="font-weight-bold"></span>-->
-<!--                <span th:text="${dorm.dormDesc}" class="font-weight-bold"></span>-->
-<!--                <span th:text="${dorm.price}" class="font-weight-bold"></span>-->
-<!--                <a th:href="@{/add-wishList/{dorm_id}(dorm_id=${dorm.dormId})}">-->
-<!--                    Add To WishList-->
-<!--                </a>-->
-<!--                &lt;!&ndash;                    <img th:src="@{'/photo/' + ${dorm.photo.id}}" alt="" />&ndash;&gt;-->
-<!--                <span>-->
-<!--                        <ul>-->
-<!--                            <li th:each="photo : ${dorm.dormPhotos}">-->
-<!--                                <img th:src="@{'/photo/' + ${photo.id}}" alt="" />-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                </span>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </li>-->
-<!--</ul>-->
 </body>
 </html>

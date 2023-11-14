@@ -65,4 +65,9 @@ public class DormServiceImpl implements DormService {
         Dorm dorm = dormRepository.findById(dormId).get();
         return dorm;
     }
+
+    @Override
+    public List<Dorm> findDormByLandlordId(Long landlordId) {
+        return dormRepository.findDormsByLandlordId(landlordId);
+    }
 }
