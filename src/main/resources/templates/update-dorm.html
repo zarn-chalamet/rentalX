@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Dorm Info</title>
+</head>
+<body>
+    <h1>Update Dorm Info</h1>
+    <div align="center">
+        <h1>User Registration</h1>
+        <form th:action="@{/updateDorm/{dorm_id}(dorm_id=${dorm.dormId})}" method="POST" th:object="${updatedDorm}" enctype="multipart/form-data">
+            <label>Name:</label>
+            <input type="text" th:field="*{dormName}" /><br/>
+
+
+            <label>Desc:</label>
+            <input type="text" th:field="*{dormDesc}" /><br/>
+
+            <label>Price:</label>
+            <input type="number" th:field="*{price}" /><br/>
+            <!--        <input type="file" name="dormPhotos" th:field="*{dormPhotos}" accept="image/*" >-->
+
+            <label>Bedroom:</label>
+            <input type="number" th:field="*{bedroom}" /><br/>
+
+
+            <label>Bathroom:</label>
+            <input type="number" th:field="*{bathroom}" /><br/>
+
+            <label>City:</label>
+            <input type="text" th:field="*{city}" /><br/>
+
+            <label>Amenities:</label>
+            <input type="text" th:field="*{amenities}" /><br/>
+
+            <label>Latitude:</label>
+            <input type="text" th:field="*{latitude}" /><br/>
+
+            <label>Longitude:</label>
+            <input type="text" th:field="*{longitude}" /><br/>
+
+            <label>Dorm Photos:</label>
+            <input type="file" name="file" accept="image/*" multiple><br/>
+
+            <button type="submit">Submit</button>
+
+            <a href="/login">Back to login</a>
+
+        </form>
+    </div>
+</body>
+</html>

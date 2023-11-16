@@ -73,6 +73,7 @@
                 <div class="image-gallery">
                     <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
                 </div>
+                <a th:href="@{/showEachMap/{id} (id=${dorm.dormId})}">Map</a>
             </div>
         </a>
     </div>

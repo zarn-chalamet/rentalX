@@ -18,11 +18,29 @@
 
         <label>Price:</label>
         <input type="number" th:field="*{price}" /><br/>
+        <!--        <input type="file" name="dormPhotos" th:field="*{dormPhotos}" accept="image/*" >-->
+
+        <label>Bedroom:</label>
+        <input type="number" th:field="*{bedroom}" /><br/>
+
+
+        <label>Bathroom:</label>
+        <input type="number" th:field="*{bathroom}" /><br/>
+
+        <label>City:</label>
+        <input type="text" th:field="*{city}" /><br/>
+
+        <label>Amenities:</label>
+        <input type="text" th:field="*{amenities}" /><br/>
+
+        <label>Latitude:</label>
+        <input type="text" th:field="*{latitude}" /><br/>
+
+        <label>Longitude:</label>
+        <input type="text" th:field="*{longitude}" /><br/>
 
         <label>Dorm Photos:</label>
         <input type="file" name="file" accept="image/*" multiple required><br/>
-        <!--        <input type="file" name="dormPhotos" th:field="*{dormPhotos}" accept="image/*" >-->
-
 
         <button type="submit">Submit</button>
 

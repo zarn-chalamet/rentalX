@@ -18,8 +18,51 @@ public class DormServiceImpl implements DormService {
     private DormRepository dormRepository;
     @Override
     public Dorm save(DormDto dormDto) {
-        Dorm dorm = new Dorm(dormDto.getDormName(),dormDto.getDormDesc(),dormDto.getPrice(),dormDto.getDormPhotos(),dormDto.getLandlord());
+        Dorm dorm = new Dorm(dormDto.getDormName(),dormDto.getDormDesc(), dormDto.getPrice(),
+                dormDto.getBedroom(),dormDto.getBathroom(),dormDto.getCity(),
+                dormDto.getAmenities(),dormDto.getLatitude(),dormDto.getLongitude(),
+                dormDto.getDormPhotos(),dormDto.getLandlord());
         return dormRepository.save(dorm);
+    }
+
+    @Override
+    public void updateDormInfo(Dorm originalDorm, DormDto updateDorm) {
+        Long originalDormId = originalDorm.getDormId();
+        updateDorm.setLandlord(originalDorm.getLandlord());
+        if(updateDorm.getDormName().equals("")){
+            updateDorm.setDormName(originalDorm.getDormName());
+        }
+        if(updateDorm.getDormDesc().equals("")){
+            updateDorm.setDormDesc(originalDorm.getDormDesc());
+        }
+        if(updateDorm.getPrice() == null){
+            updateDorm.setPrice(originalDorm.getPrice());
+        }
+        if(updateDorm.getBedroom() == null){
+            updateDorm.setBedroom(originalDorm.getBedroom());
+        }
+        if(updateDorm.getBathroom() == null){
+            updateDorm.setBathroom(originalDorm.getBathroom());
+        }
+        if(updateDorm.getCity().equals("")){
+            updateDorm.setCity(originalDorm.getCity());
+        }
+        if(updateDorm.getPrice() == 0){
+            updateDorm.setPrice(originalDorm.getPrice());
+        }
+        if(updateDorm.getAmenities().equals("")){
+            updateDorm.setAmenities(originalDorm.getAmenities());
+        }
+        if(updateDorm.getLatitude() == null){
+            updateDorm.setLatitude(originalDorm.getLatitude());
+        }
+        if(updateDorm.getLongitude() == null){
+            updateDorm.setLongitude(originalDorm.getLongitude());
+        }
+        dormRepository.updateDorm(originalDormId, updateDorm.getDormName(), updateDorm.getDormDesc(),
+                updateDorm.getPrice(), updateDorm.getBedroom(), updateDorm.getBathroom(),
+                updateDorm.getCity(), updateDorm.getAmenities(), updateDorm.getLatitude(),
+                updateDorm.getLongitude());
     }
 
     @Override

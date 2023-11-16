@@ -47,7 +47,7 @@
         <h2>Welcome, [[${user.getUserName()}]]</h2>
         <a th:href="@{/dorms}">Dorm List</a>
         <a th:href="@{/wishlists}">Show wishlists</a>
-        
+        <a th:href="@{/show-map}">Map</a>
         <span sec:authorize="isAuthenticated">
         <a th:href="@{/logout}">
          Logout

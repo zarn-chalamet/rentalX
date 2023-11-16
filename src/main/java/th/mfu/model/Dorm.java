@@ -11,6 +11,12 @@ public class Dorm {
     private String dormName;
     private String dormDesc;
     private Integer price;
+    private Integer bedroom;
+    private Integer bathroom;
+    private String city;
+    private String amenities;
+    private Double latitude;
+    private Double longitude;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "dorm_photos",
             joinColumns = {
@@ -26,14 +32,19 @@ public class Dorm {
     public Dorm() {
     }
 
-    public Dorm(String dormName, String dormDesc, Integer price, Set<Photo> dormPhotos, User landlord) {
+    public Dorm(String dormName, String dormDesc, Integer price, Integer bedroom, Integer bathroom, String city, String amenities, Double latitude, Double longitude, Set<Photo> dormPhotos, User landlord) {
         this.dormName = dormName;
         this.dormDesc = dormDesc;
         this.price = price;
+        this.bedroom = bedroom;
+        this.bathroom = bathroom;
+        this.city = city;
+        this.amenities = amenities;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.dormPhotos = dormPhotos;
         this.landlord = landlord;
     }
-
     public Long getDormId() {
         return dormId;
     }
@@ -70,7 +81,7 @@ public class Dorm {
         return dormPhotos;
     }
 
-    public void setDorms(Set<Photo> dormPhotos) {
+    public void setDormPhotos(Set<Photo> dormPhotos) {
         this.dormPhotos = dormPhotos;
     }
 
@@ -80,5 +91,53 @@ public class Dorm {
 
     public void setLandlord(User landlord) {
         this.landlord = landlord;
+    }
+
+    public Integer getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(Integer bedroom) {
+        this.bedroom = bedroom;
+    }
+
+    public Integer getBathroom() {
+        return bathroom;
+    }
+
+    public void setBathroom(Integer bathroom) {
+        this.bathroom = bathroom;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(String amenities) {
+        this.amenities = amenities;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }

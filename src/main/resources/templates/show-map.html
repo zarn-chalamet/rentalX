@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dormitory Details</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEjXuCm1DlscaczQcMkvNeU0k7qiZ6iJw&libraries=places"></script>
+</head>
+<body>
+<h2>Dormitory Details</h2>
+
+<!-- existing details -->
+
+<div id="map" style="height: 400px;"></div>
+
+<script th:inline="javascript">
+    function initMap() {
+        var dormLocation = {lat: 20.04481791818581, lng: 99.89426859476396};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: dormLocation
+        });
+        var myArray = /*[[${dorms}]]*/ [];
+
+        myArray.forEach(function(dorm) {
+            // Your JavaScript code for each item goes here
+            addMarker(dorm.latitude,dorm.longitude);
+
+        });
+
+        function addMarker(lat,lng){
+            var marker = new google.maps.Marker({
+            position: {lat: lat, lng: lng},
+            map: map,
+            });
+        }
+    }
+
+
+    // Call the initMap function when the page is loaded
+    google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+</body>
+</html>

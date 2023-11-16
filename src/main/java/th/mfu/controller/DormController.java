@@ -42,8 +42,7 @@ public class DormController {
 
     @GetMapping("/create-dorm")
     public String showCreateDormForm(Model model){
-        DormDto dormDto = new DormDto();
-        model.addAttribute("dorm",dormDto);
+        model.addAttribute("dorm",new DormDto());
         return "dorm-create-form";
     }
     @PostMapping("/create-dorm")
@@ -52,12 +51,11 @@ public class DormController {
                              @RequestPart("file")MultipartFile[] file){
         try{
             String email = userDetails.getUsername();
-
             dormDto.setDormPhotos(photoService.uploadPhoto(file));
             System.out.println(userService.findByEmail(email));
             dormDto.setLandlord(userService.findByEmail(email));
             dormService.save(dormDto);
-            return "dorms-list";
+            return "redirect:/show-landlord-dorms";
         }catch (IOException e){
             e.printStackTrace();
             return "dorm-create-form";
@@ -117,6 +115,36 @@ public class DormController {
         model.addAttribute("dorm",dormService.findById(dormId));
         model.addAttribute("review",new ReviewDto());
         return "show-each-dorm";
+    }
+
+    @GetMapping("/showEachMap/{id}")
+    public String showEachMap(Model model,@PathVariable("id") Long dormId){
+        model.addAttribute("dorm",dormService.findById(dormId));
+        return "show-each-map";
+    }
+
+    @GetMapping("/show-map")
+    public String showMap(Model model){
+        model.addAttribute("dorms",dormService.getAllDorms());
+        return "show-map";
+    }
+
+    @GetMapping("/updateDorm/{dorm_id}")
+    public String updateDorm(Model model,@PathVariable("dorm_id") Long dormId){
+        model.addAttribute("dorm",dormService.findById(dormId));
+        model.addAttribute("updatedDorm",new DormDto());
+        return "update-dorm";
+    }
+    @PostMapping("/updateDorm/{dorm_id}")
+    public String submitUpdatedDorm(Model model,@PathVariable("dorm_id") Long dormId,
+                                    @ModelAttribute("updatedDorm") DormDto updateDorm){
+        System.out.println("=======================================================================");
+        System.out.println(updateDorm.getDormDesc());
+        System.out.println(updateDorm.getCity());
+        System.out.println(updateDorm.getAmenities());
+        System.out.println("=======================================================================");
+        dormService.updateDormInfo(dormService.findById(dormId),updateDorm);
+        return "redirect:/show-landlord-dorms";
     }
 
 }

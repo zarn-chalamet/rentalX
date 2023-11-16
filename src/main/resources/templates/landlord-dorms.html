@@ -53,6 +53,7 @@
             <div class="image-gallery">
                 <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
             </div>
+            <a th:href="@{/updateDorm/{dorm_id}(dorm_id=${dorm.dormId})}">Edit dorm</a>
         </div>
     </div>
 
