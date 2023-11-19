@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .authorizeRequests(request -> request.antMatchers("/admin-page","/create-dorm","show-landlord-dorms")
                         .hasAuthority("LANDLORD")
                         .antMatchers("/user-page","/dorms","/wishlists","/add-wishList/**").hasAuthority("USER")
-                        .antMatchers("/registration", "/css/**").permitAll()
+                        .antMatchers("/password-request/**","/registration", "/css/**","/reset-password/**").permitAll()
                         .anyRequest().authenticated())
 
                 .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
