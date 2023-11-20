@@ -67,10 +67,24 @@ public class UserController {
         model.addAttribute("user",user);
         return "profile";
     }
+    @GetMapping("/profile-nyl")
+    public String showProfileNyl(@AuthenticationPrincipal UserDetails userDetails,Model model){
+        String email = userDetails.getUsername();
+        User user = userService.findByEmail(email);
+        model.addAttribute("user",user);
+        return "profile-nyl";
+    }
+
     @GetMapping("/edit-profile")
     public String editProfile(Model model){
         model.addAttribute("updateUser",new UserDto());
         return "edit-page";
+    }
+
+    @GetMapping("/edit-nyl")
+    public String editNyl(Model model){
+        model.addAttribute("updateUser",new UserDto());
+        return "edit-nyl";
     }
     @Transactional
     @PostMapping("/edit-profile")

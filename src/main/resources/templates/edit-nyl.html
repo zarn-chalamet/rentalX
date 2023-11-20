@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" th:href="@{../css/nyl.css}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">
+        <h3><i class="fa-solid fa-hotel"></i> Rental  <span>X</span></h3>
+    </div>
+    <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="nav">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" class="user" alt="">
+
+        <div class="user-button">
+            <button>Ethan</button>
+        </div>
+        <div class="menu">
+            <ul>
+                <button class="btn6"> Contact Us</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div  class="userphoto">
+    <div class="username">
+        <img class="userimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="">
+        <h1>Ethan</h1>
+    </div>
+    <button class="properties">Explore properties</button>
+</div>
+<div class="butts">
+    <h1>Profile Info</h1>
+    <div>
+    <a th:href="@{/wishlists}">
+        <button class="btn5"><i class="fa-regular fa-heart" id="wishlist"></i> Wishlist</button>
+    </a>
+    <a th:href="@{/show-map}">
+        <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+    </a>
+    </div>
+</div>
+<div class="userinfo">
+    <div class="infocard">
+        <form id="userForm" th:action="@{/edit-profile}" method="post" role="form" th:object="${updateUser}">
+            <div class="infos">
+                <div class="name">
+                    <div> Name
+                        <input type="text" th:field="*{userName}" class="userinput" placeholder="Name*" required>
+
+                    </div>
+                </div>
+                <div class="name">
+                    <div> Email
+                        <input type="text" name="email" class="userinput">
+                    </div>
+                </div>
+                <div class="name">
+                    <div> PhNo
+                        <input type="text" name="phno" class="userinput" placeholder="Confirm password*">
+                    </div>
+                </div>
+            </div>
+            <div class="infobutt">
+                <a th:href="@{/change-password}">
+                    <button class="pass" type="button">Change password</button>
+                </a>
+
+                <button class="update" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <p>fb.com/renfolx.coth</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="footer-section links">
+
+            <ul>
+                <li><span>+66955344442</span></li>
+                <li><span>contact@rentalx.co.th</span></li>
+
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="rent.js"></script>
+</html>

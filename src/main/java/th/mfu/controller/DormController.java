@@ -15,6 +15,7 @@ import th.mfu.model.Dorm;
 import th.mfu.model.User;
 import th.mfu.service.DormService;
 import th.mfu.service.PhotoService;
+import th.mfu.service.ReviewService;
 import th.mfu.service.UserService;
 
 import java.io.IOException;
@@ -35,6 +36,8 @@ public class DormController {
 
     @Autowired
     private PhotoService photoService;
+    @Autowired
+    private ReviewService reviewService;
 
     public DormController(DormService dormService) {
         this.dormService = dormService;
@@ -63,24 +66,30 @@ public class DormController {
     }
 
     @GetMapping("dorms")
-    public String dormList(Model model){
+    public String dormList(Model model,@AuthenticationPrincipal UserDetails userDetails){
+        String email = userDetails.getUsername();
         model.addAttribute("dorms",dormService.getAllDorms());
+        model.addAttribute("user",userService.findByEmail(email));
         return "dorms-list";
     }
 
     @GetMapping("dormms")
-    public String dormsss(Model model){
+    public String dormsss(Model model,@AuthenticationPrincipal UserDetails userDetails){
+        String email = userDetails.getUsername();
         model.addAttribute("dorms",dormService.getAllDorms());
+        model.addAttribute("user",userService.findByEmail(email));
         return "dorm-list";
     }
 
     @PostMapping("/dorms/search")
-    public String searchDorms(@RequestParam String keyword, Model model){
+    public String searchDorms(@RequestParam String keyword, Model model,@AuthenticationPrincipal UserDetails userDetails){
+        String email = userDetails.getUsername();
+        model.addAttribute("user",userService.findByEmail(email));
         model.addAttribute("dorms", dormService.findByKeyword(keyword));
-        return "dorms-list";
+        return "dorm-list";
     }
     @GetMapping("/dorms/sort")
-    public String sortDorms(@RequestParam("sortBy") String sortBy, Model model) {
+    public String sortDorms(@RequestParam("sortBy") String sortBy, Model model,@AuthenticationPrincipal UserDetails userDetails) {
         List<Dorm> sortedDorms;
 
         switch (sortBy) {
@@ -97,9 +106,10 @@ public class DormController {
                 sortedDorms = dormService.getAllDorms();
                 break;
         }
-
+        String email = userDetails.getUsername();
+        model.addAttribute("user",userService.findByEmail(email));
         model.addAttribute("dorms", sortedDorms);
-        return "dorms-list";
+        return "dorm-list";
     }
 
     @GetMapping("/show-landlord-dorms")
@@ -114,7 +124,21 @@ public class DormController {
     public String showEachDorm(Model model,@PathVariable("id") Long dormId){
         model.addAttribute("dorm",dormService.findById(dormId));
         model.addAttribute("review",new ReviewDto());
+        model.addAttribute("reviewsInRepo",reviewService.findByDormId(dormId));
         return "show-each-dorm";
+    }
+
+    @GetMapping("/dorm/nyl/{id}")
+    public String shoEachDorm(Model model,@PathVariable("id") Long dormId){
+        model.addAttribute("dorm",dormService.findById(dormId));
+        model.addAttribute("review",new ReviewDto());
+        model.addAttribute("reviewsInRepo",reviewService.findByDormId(dormId));
+        return "show-each-dorm-nyl";
+    }
+
+    @GetMapping("test")
+    public String test(){
+        return "test";
     }
 
     @GetMapping("/showEachMap/{id}")

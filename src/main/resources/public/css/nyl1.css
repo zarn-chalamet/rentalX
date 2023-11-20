@@ -126,11 +126,14 @@ body {
 
     }
 
+
     #search-button {
         background-color: #009688;
         border: none;
         color: #fff;
         padding: 10px 15px;
+
+
         background-color: rgb(226, 224, 224);
 
     }
@@ -171,8 +174,32 @@ body {
     .sort {
         margin-left: 140px;
     }
+    .btn3 {
+    height: 40px;
+    width: 110px;
+    border: 1px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
 
-    .btn3, .btn4, .btn5, .btn6 {
+.options-dropdown {
+    height: 30px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.submit-btn {
+    height: 40px;
+    width: 80px;
+    border: 1px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .btn4, .btn5, .btn6 {
         height: 40px;
         width: 110px;
         border: 1px solid black;
@@ -219,7 +246,7 @@ body {
         background-color: #1e1919;
     }
 
-    .photocard{
+    .photosession{
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
@@ -689,7 +716,7 @@ body {
     border: none;
     cursor: pointer;
 }
-.update{
+#update{
     height: 35px;
     width: 170px;
     border-radius: 40px;
@@ -782,9 +809,13 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
-
 }
-.dorm-photo{
-    width: 100%;
-    height: 100%;
+.move{
+   margin-left: 70px;
+}
+
+
+.homeimg{
+    width:100%;
+    height: 50%;
 }

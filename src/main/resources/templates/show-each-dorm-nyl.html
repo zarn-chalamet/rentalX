@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{../css/nyl1.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEjXuCm1DlscaczQcMkvNeU0k7qiZ6iJw&libraries=places"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <h3><i class="fa-solid fa-hotel"></i> Rental  <span>X</span></h3>
+    </div>
+    <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="nav">
+        <div class="user-button">
+            <button>Ethan</button>
+        </div>
+        <div class="menu">
+            <ul>
+                <button class="btn6"> Contact Us</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="photo-container">
+    <div class="photo1">
+        <img class="photohalf" th:src="@{'/photo/' + ${dorm.dormPhotos[0].id}}" alt="Photo 1">
+    </div>
+    <div class="photo2">
+        <img class="photoquarter" th:src="@{'/photo/' + ${dorm.dormPhotos[1].id}}" alt="Photo 2">
+        <img class="photoquarter" th:src="@{'/photo/' + ${dorm.dormPhotos[0].id}}" alt="Photo 3">
+        <img class="photoquarter" th:src="@{'/photo/' + ${dorm.dormPhotos[0].id}}" alt="Photo 4">
+        <div id="map" style="height: 400px; width: 400px;"></div>
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+    <div class="buttone">
+        <button class="btn5"><i class="fa-regular fa-heart"></i> favourite</button>
+        <button class="btn4"><i class="fa-solid fa-share"></i> Share</button>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="leftcontent">
+        <h1 th:text="${dorm.dormName}"></h1>
+        <h1>University Dormitory</h1>
+        <h5 th:text="${dorm.city}"></h5>
+        <h3 th:text="${dorm.price}"> Baht/month</h3>
+        <h1>About this apartment</h1>
+        <p th:text="${dorm.dormDesc}"></p>
+        Please contact us to schedule a viewing</p>
+        <h1>Amenities</h1>
+        <div class="amenities" th:text="${dorm.amenities}"></div>
+    </div>
+
+    <div class="rightcontent">
+        <div class="card" th:each="review1 : ${reviewsInRepo}">
+            <div class="card-header">
+                <p>Reviews and feebacks about this apartment</p>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="review">
+                        <div class="circle">
+                            <button class="colour"></button>
+                        </div>
+                        <div class="feedback">
+                            <p th:text="${review1.user.userName}"></p>
+                            <div class="write">
+                                <p th:text="${review1.reviewFromUser}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="bookbtn">
+            <button class="book">Book room now!</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <p>fb.com/renfolx.coth</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="footer-section links">
+
+            <ul>
+                <li><span>+66955344442</span></li>
+                <li><span>contact@rentalx.co.th</span></li>
+
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        var dormLocation = {lat: [[${dorm.latitude}]], lng: [[${dorm.longitude}]]};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: dormLocation
+        });
+        var marker = new google.maps.Marker({
+            position: dormLocation,
+            map: map,
+            title: 'Dormitory Location'
+        });
+    }
+    // Call the initMap function when the page is loaded
+    google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+
+</body>
+</html>

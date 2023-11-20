@@ -1,10 +1,15 @@
 package th.mfu.dto;
 
+import th.mfu.model.Dorm;
+import th.mfu.model.User;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 public class ReviewDto {
-    private Long dormId;
-    private Long userId;
+    private User user;
+    private Dorm dorm;
     private int rating;
     private String reviewFromUser;
     private LocalDateTime timestamp;
@@ -12,28 +17,28 @@ public class ReviewDto {
     public ReviewDto() {
     }
 
-    public ReviewDto(Long dormId, Long userId, int rating, String reviewFromUser, LocalDateTime timestamp) {
-        this.dormId = dormId;
-        this.userId = userId;
+    public ReviewDto(User user, Dorm dorm, int rating, String reviewFromUser, LocalDateTime timestamp) {
+        this.user = user;
+        this.dorm = dorm;
         this.rating = rating;
         this.reviewFromUser = reviewFromUser;
         this.timestamp = timestamp;
     }
 
-    public Long getDormId() {
-        return dormId;
+    public User getUser() {
+        return user;
     }
 
-    public void setDormId(Long dormId) {
-        this.dormId = dormId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Dorm getDorm() {
+        return dorm;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setDorm(Dorm dorm) {
+        this.dorm = dorm;
     }
 
     public int getRating() {

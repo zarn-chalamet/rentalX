@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" th:href="@{../css/nyl.css}">
+    <link rel="stylesheet" th:href="@{../css/user-profile.css}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">
+        <h3><i class="fa-solid fa-hotel"></i> Rental  <span>X</span></h3>
+    </div>
+    <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="nav">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" class="user" alt="">
+
+        <div class="user-button">
+            <a href="userprofile.html"><button>Ethan</button></a>
+        </div>
+        <div class="menu">
+            <ul>
+                <button class="btn6"> Contact Us</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1>nayyelin</h1>
+<div  class="userphoto">
+    <div class="username">
+        <img class="userimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="">
+        <h1 th:text="${user.userName}"></h1>
+    </div>
+    <a th:href="@{/dormms}">
+        <button class="properties">Explore properties</button>
+    </a>
+</div>
+<div class="butts">
+    <h1>Profile Info</h1>
+    <a th:href="@{/wishlists}">
+        <button class="btn5"><i class="fa-regular fa-heart"></i> Wishlist</button>
+    </a>
+    <a th:href="@{/show-map}">
+        <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+    </a>
+</div>
+
+<div class="userinfo">
+    <div class="infocard">
+        <div class="user_infos">
+            <div>
+                <div class="userinfo-text">
+                    <div>Name </div>
+                    <div>:</div>
+                    <div class="email1"><span th:text="${user.userName}"></span></div>
+                </div>
+                <div class="userinfo-text">
+                    <div>Email</div>
+                    <div>:</div>
+                    <div class="email1"><span th:text="${user.email}"></span></div>
+                </div>
+                <div class="userinfo-text">
+                    <div>PhNo.</div>
+                    <div>:</div>
+                    <div class="email1"> - </div></div>
+            </div>
+        </div>
+        <div class="infobutt">
+            <a th:href="@{/edit-nyl}">
+                <button class="pass" type="button">Edit Profile</button>
+            </a>
+            <a th:href="@{/logout}">
+                <button id="update" type="submit">Log out</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <p>fb.com/renfolx.coth</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="footer-section links">
+
+            <ul>
+                <li><span>+66955344442</span></li>
+                <li><span>contact@rentalx.co.th</span></li>
+
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="rent.js"></script>
+</html>

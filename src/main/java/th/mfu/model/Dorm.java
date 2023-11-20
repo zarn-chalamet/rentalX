@@ -1,6 +1,7 @@
 package th.mfu.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,7 +29,6 @@ public class Dorm {
     private Set<Photo> dormPhotos;
     @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
     private User landlord;
-
     public Dorm() {
     }
 
@@ -45,6 +45,7 @@ public class Dorm {
         this.dormPhotos = dormPhotos;
         this.landlord = landlord;
     }
+
     public Long getDormId() {
         return dormId;
     }

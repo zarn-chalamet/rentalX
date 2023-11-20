@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import th.mfu.dto.ReviewDto;
+import th.mfu.model.Dorm;
 import th.mfu.model.User;
 import th.mfu.service.DormService;
 import th.mfu.service.ReviewService;
@@ -29,18 +30,19 @@ public class ReviewController {
     @PostMapping("/add-review/{dorm_id}")
     public String writeReview(Model model, @PathVariable("dorm_id") Long dormId,
                               @AuthenticationPrincipal UserDetails userDetails, @ModelAttribute("review") ReviewDto reviewDto){
+        Dorm dorm = dormService.findById(dormId);
         String email = userDetails.getUsername();
         User user = userService.findByEmail(email);
-        Long userId = user.getId();
-        reviewDto.setUserId(userId);
+        reviewDto.setUser(user);
+        reviewDto.setDorm(dorm);
         reviewDto.setTimestamp(LocalDateTime.now());
-        reviewDto.setDormId(dormId);
         reviewService.save(reviewDto);
-        return "review";
+        return "redirect:/dorm/"+dormId;
     }
     @PostMapping("write-review")
     public String addReview(@ModelAttribute("review") ReviewDto reviewDto){
         reviewService.save(reviewDto);
         return "review";
     }
+
 }

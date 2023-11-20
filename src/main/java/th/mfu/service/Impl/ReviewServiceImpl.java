@@ -7,6 +7,8 @@ import th.mfu.model.Review;
 import th.mfu.repository.ReviewRepository;
 import th.mfu.service.ReviewService;
 
+import java.util.List;
+
 @Service
 public class ReviewServiceImpl implements ReviewService {
     @Autowired
@@ -14,7 +16,12 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public Review save(ReviewDto reviewDto) {
-        Review review = new Review(reviewDto.getDormId(),reviewDto.getUserId(),reviewDto.getRating(),reviewDto.getReviewFromUser(),reviewDto.getTimestamp());
+        Review review = new Review(reviewDto.getDorm(),reviewDto.getUser(),reviewDto.getRating(),reviewDto.getReviewFromUser(),reviewDto.getTimestamp());
         return reviewRepository.save(review);
+    }
+
+    @Override
+    public List<Review> findByDormId(Long dormId) {
+        return reviewRepository.findByDormId(dormId);
     }
 }

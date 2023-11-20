@@ -1,9 +1,6 @@
 package th.mfu.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,8 +8,13 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long reviewId;
-    private Long dormId;
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "dormId", referencedColumnName = "dormId")
+    private Dorm dorm;
     private int rating;
     private String reviewFromUser;
     private LocalDateTime timestamp;
@@ -20,9 +22,9 @@ public class Review {
     public Review() {
     }
 
-    public Review(Long dormId, Long userId, int rating, String reviewFromUser, LocalDateTime timestamp) {
-        this.dormId = dormId;
-        this.userId = userId;
+    public Review(Dorm dorm, User user, int rating, String reviewFromUser, LocalDateTime timestamp) {
+        this.dorm = dorm;
+        this.user = user;
         this.rating = rating;
         this.reviewFromUser = reviewFromUser;
         this.timestamp = timestamp;
@@ -36,20 +38,20 @@ public class Review {
         this.reviewId = reviewId;
     }
 
-    public Long getDormId() {
-        return dormId;
+    public User getUser() {
+        return user;
     }
 
-    public void setDormId(Long productId) {
-        this.dormId = productId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Dorm getDorm() {
+        return dorm;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setDorm(Dorm dorm) {
+        this.dorm = dorm;
     }
 
     public int getRating() {

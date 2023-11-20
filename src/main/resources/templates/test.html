@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{../css/nyl1.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <h3><i class="fa-solid fa-hotel"></i> Rental  <span>X</span></h3>
+    </div>
+    <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="nav">
+        <div class="user-button">
+            <button>Ethan</button>
+        </div>
+        <div class="menu">
+            <ul>
+                <button class="btn6"> Contact Us</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="photo-container">
+    <div class="photo1">
+        <img class="photohalf" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="Photo 1">
+    </div>
+    <div class="photo2">
+        <img class="photoquarter" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="Photo 2">
+        <img class="photoquarter" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="Photo 3">
+        <img class="photoquarter" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="Photo 4">
+        <img class="photoquarter" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" alt="Photo 5">
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+    <div class="buttone">
+        <button class="btn5"><i class="fa-regular fa-heart"></i> favourite</button>
+        <button class="btn4"><i class="fa-solid fa-share"></i> Share</button>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="leftcontent">
+        <h1 th:text="${dorm.dormName}"></h1>
+        <h1>University Dormitory</h1>
+        <h5 th:text="${dorm.city}"></h5>
+        <h3>4000Baht/month</h3>
+        <h1>About this apartment</h1>
+        <p>1 bedroom, 1 bathroom apartment for rent with a floorsize of
+        <p>24 square-meters,located near Mae Fah Luang University.</p>
+        Please contact us to schedule a viewing</p>
+        <h1>Amenities</h1>
+        <div class="amenities">
+            <p>Air conditioning</p>
+            <p>Hot shower heater</p>
+            <p>Balcony</p>
+            <p>Cable TV</p>
+            <p>Free-wifi</p>
+            <p>kitchen</p>
+        </div>
+    </div>
+
+    <div class="rightcontent">
+        <div class="card">
+            <div class="card-header">
+                <p>Reviews and feebacks about this apartment</p>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="review">
+                        <div class="circle">
+                            <button class="colour"></button>
+                        </div>
+                        <div class="feedback">
+                            Mia
+                            <div class="write">
+                                Perfect place for students
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <div>
+                    <div class="review">
+                        <div class="circle">
+                            <button class="colour1"></button>
+                        </div>
+                        <div class="feedback">
+                            Mia
+                            <div class="write">
+                                Perfect place for students
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <div>
+                    <div class="review">
+                        <div class="circle">
+                            <button class="colour2"></button>
+                        </div>
+                        <div class="feedback">
+                            Mia
+                            <div class="write">
+                                Perfect place for students
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <div>
+                    <div class="review">
+                        <div class="circle">
+                            <button class="colour3"></button>
+                        </div>
+                        <div class="feedback">
+                            Mia
+                            <div class="write">
+                                Perfect place for students
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <input type="text" placeholder="Give feedbacks and reviews">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="bookbtn">
+            <button class="book">Book room now!</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <p>fb.com/renfolx.coth</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="footer-section links">
+
+            <ul>
+                <li><span>+66955344442</span></li>
+                <li><span>contact@rentalx.co.th</span></li>
+
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

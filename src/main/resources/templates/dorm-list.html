@@ -3,12 +3,6 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" th:href="@{../css/nyl.css}">
-  <style>
-    img{
-        width: 100px;
-        height: 100px;
-    }
-  </style>
 </head>
 <body>
 <nav class="navbar">
@@ -19,9 +13,13 @@
     <i class="fa-solid fa-bars"></i>
   </div>
   <div class="nav">
-    <div class="user-button">
-      <button>Ethan</button>
-    </div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShOiYElieWi3Z9s0BBnHMlPIbLM2Yfs3iLnw&usqp=CAU" class="user" alt="">
+
+    <a th:href="@{/profile-nyl}">
+      <div class="user-button">
+        <button><span th:text="${user.userName}"></span></button>
+      </div>
+    </a>
     <div class="menu">
       <ul>
         <button class="btn6"> Contact Us</button>
@@ -29,64 +27,92 @@
     </div>
   </div>
 </nav>
-
+<form th:action="@{/dorms/search}" method="POST">
   <div class="search-container">
     <div class="search-bar">
-      <form action="/dorms/search" method="POST">
-      <div>
-        <i class="fa fa-search" id="ss"> <input type="text" placeholder="Location,City,Building..." ></i>
-        <button class="custom-button">Search</button>
-      </div>
-      </form>
+      <i class="fa fa-search" id="search-button"></i>
+
+      <input type="text" name="keyword" placeholder="Location, City, Building...">
     </div>
+    <button type="submit" class="custom-button">Search</button>
   </div>
+  </div>
+</form>
 <div class="container">
   <h2 class="ads">Properties for Rent in Thailand</h2>
-  <form action="/dorms/sort" method="GET">
-    <label>Sort By:</label>
-    <select name="sortBy">
-      <option value="priceLowToHigh">Price: Low to High</option>
-      <option value="priceHighToLow">Price: High to Low</option>
+  <form id="sortForm" th:action="@{/dorms/sort}" method="GET" >
+    <label for="sortBy">Sort by:</label>
+    <select id="sortBy" name="sortBy"  onchange="document.getElementById('sortForm').submit()">
+      <option value="recommended">Recommended</option>
+      <option value="priceLowToHigh">Price low to high</option>
+      <option value="priceHighToLow">Price high to low</option>
       <option value="nameAlphabetically">Name: Alphabetically</option>
     </select>
-    <button type="submit">Sort</button>
   </form>
-<!--  <button class="btn3"><i class="fa-solid fa-arrow-down-short-wide"></i> Filter & sort</button>-->
-  <button class="btn4"><i class="fa-solid fa-share"></i> Share</button>
-  <button class="btn5"><i class="fa-regular fa-heart"></i> Wishlist</button>
-  <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+  <a th:href="@{/wishlists}">
+    <button class="btn5"><i class="fa-regular fa-heart"></i> Wishlist</button>
+  </a>
+  <a th:href="@{/show-map}">
+    <button class="btn6"><i class="fa-solid fa-location-dot"></i> Map</button>
+  </a>
 </div>
 
 <div>
   <h4 class="sort">Sort by Recommended</h4>
 </div>
-<div class="session">
-  <div th:each="dorm : ${dorms}" class="product-card">
-    <div class="image-gallery">
-      <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
-    </div>
-    <!-- <img src="RegentGym.jpg" alt="Product Image" class="img1"> -->
-    <div class="title">
-      <h3 th:text="${dorm.dormName}"></h3>
-      <div class="bb">
-        <button class="heart"> <i class="fa-regular fa-heart full_red"></i></button>
-        <button class="share">   <i class="fa-solid fa-share"></i></button>
-      </div>
-    </div>
 
-    <hr>
-    <p class="product-description" th:text="${dorm.dormDesc}"></p>
-    <h3 class="product-price">$<span th:text="${dorm.price}"></span></h3>
-    <hr>
-    <div class="info">
-      <span class="bed"><i class="fa-regular fa-moon"></i> 1 bedroom </span>
-      <span class="bath"><i class="fa-solid fa-shower"></i> 1 bathroom </span>
-    </div>
-    <div class="btns">
-      <button class="product-button">Add to Cart</button>
-      <button class="map-button"><i class="fa-solid fa-location-dot"></i> Map</button>
+<div >
+  <div class="photocard">
+    <div th:each="dorm : ${dorms}" class="product-card" >
+      <a th:href="@{/dorm/{id} (id=${dorm.dormId})}">
+        <div>
+          <div class="image-gallery">
+            <img class="dorm-photo" th:src="@{'/photo/' + ${dorm.dormPhotos[0].id}}" alt="Product Image">
+          </div>
+
+          <div class="title">
+            <h3 th:text="${dorm.dormName}"></h3>
+            <div class="bb">
+              <a th:href="@{/add-wishList/{dorm_id}(dorm_id=${dorm.dormId})}">
+                <button class="heart"> <i class="fa-regular fa-heart full_red"></i></button>
+              </a>
+
+              <button class="share">   <i class="fa-solid fa-share"></i></button>
+            </div>
+          </div>
+
+          <hr>
+          <p class="product-description" th:text="${dorm.dormDesc}"></p>
+          <h3 class="product-price">&#3647;<span th:text="${dorm.price}"></span></h3>
+          <hr>
+          <div class="info">
+            <div class="bed">
+              <i class="fa-regular fa-moon"></i> Bedroom
+              <span th:text="${dorm.bedroom}"></span>
+            </div>
+
+            <div class="bath">
+              <i class="fa-solid fa-shower"></i> Bathroom
+              <span th:text="${dorm.bathroom}"></span>
+            </div>
+          </div>
+
+          <div class="btns">
+            <button class="product-button">Add to Cart</button>
+            <a th:href="@{/showEachMap/{id} (id=${dorm.dormId})}">
+              <button class="map-button" ><i class="fa-solid fa-location-dot"></i> Map</button>
+            </a>
+
+
+          </div>
+        </div>
+      </a>
     </div>
   </div>
+</div>
+
+
+</div>
 
 <div class="footer">
   <div class="footer-content">
@@ -110,7 +136,7 @@
     </div>
   </div>
 </div>
-  <script th:src="@{/../js/nyl.js}"></script>
-</body>
 
+</body>
+<script src="rent.js"></script>
 </html>

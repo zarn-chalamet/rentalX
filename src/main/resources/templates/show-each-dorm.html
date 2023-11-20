@@ -14,6 +14,11 @@
     <div class="image-gallery">
         <img th:each="photo : ${dorm.dormPhotos}" th:src="@{'/photo/' + ${photo.id}}" alt="Product Image">
     </div>
+    <h4>Reviews</h4>
+    <div th:each="review1 : ${reviewsInRepo}">
+        <p th:text="${review1.user.userName}"></p>
+        <p th:text="${review1.reviewFromUser}"></p>
+    </div>
 <!--    <a th:href="@{/add-review/{dorm_id} (dorm_id=${dorm.dormId})}"></a>-->
     <h2>Add Your Review</h2>
     <form id="review-form" th:action="@{/add-review/{dorm_id} (dorm_id=${dorm.dormId})}"

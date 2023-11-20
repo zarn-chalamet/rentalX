@@ -65,6 +65,7 @@ public class DormServiceImpl implements DormService {
                 updateDorm.getLongitude());
     }
 
+
     @Override
     public List<Dorm> getAllDorms() {
         return dormRepository.findAll();
